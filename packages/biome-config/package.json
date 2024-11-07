@@ -1,0 +1,9 @@
+{
+  "name": "@turbo-nest-next-template/biome-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "next.json",
+    "nest.json"
+  ]
+}

@@ -1,0 +1,40 @@
+version: "3"
+services:
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+    restart: always
+    env_file: ./.env
+    environment:
+      - PORT=${WEB_PORT}
+    ports:
+      - ${WEB_PORT}:${WEB_PORT}
+    depends_on:
+      - api
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    restart: always
+    env_file: ./.env
+    environment:
+      - PORT=${API_PORT}
+    ports:
+      - ${API_PORT}:${API_PORT}
+    command: ["npm", "run", "start:prod"]
+  worker:
+    container_name: worker
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    restart: always
+    env_file: ./.env
+    ports:
+      - ${WORKER_PORT}:${WORKER_PORT}
+    command: ["npm", "run", "start:prod-worker"]

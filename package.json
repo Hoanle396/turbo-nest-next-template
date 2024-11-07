@@ -1,0 +1,26 @@
+{
+  "name": "lot",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "build:web": "turbo --filter=turbo-nest-next-template/web  build",
+    "build:api": "turbo --filter=@turbo-nest-next-template/api build",
+    "dev": "turbo dev",
+    "dev:web": "turbo --filter=turbo-nest-next-template/web dev",
+    "dev:api": "turbo --filter=@turbo-nest-next-template/api dev",
+    "dev:worker": "turbo --filter=@turbo-nest-next-template/api dev:worker",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "format:check": "turbo format:check",
+    "format:fix": "turbo format:fix"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.14",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=20"
+  }
+}
